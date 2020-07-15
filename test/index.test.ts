@@ -4,7 +4,9 @@ import { doRemark } from './test.util'
 const plugins = [
 	{
 		fn: remarkLicense,
-		options: {},
+		options: {
+			spdxId: 'Apache-2.0',
+		},
 	},
 ]
 
@@ -40,7 +42,6 @@ describe('testing with other headings and content', () => {
 		const output = '# Heading\n\n## License\n\nLicensed under Apache-2.0\n'
 
 		const vfile = await doRemark(input, plugins)
-		console.log(vfile.contents)
 		return expect(vfile.contents).toBe(output)
 	})
 })

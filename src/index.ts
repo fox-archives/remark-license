@@ -1,11 +1,11 @@
 import path from 'path'
 import assert from 'assert'
 
-interface IRemarkLicense {}
+interface IRemarkLicense {
+	spdxId: string
+}
 
 export default function checkTitle(options: IRemarkLicense) {
-	const spdxId = 'Apache-2.0'
-
 	return function checkTitleTransformer(ast: any, file: any) {
 		const licenseHeading = {
 			type: 'heading',
@@ -19,7 +19,7 @@ export default function checkTitle(options: IRemarkLicense) {
 		}
 		const licenseText = {
 			type: 'text',
-			value: `Licensed under ${spdxId}`,
+			value: `Licensed under ${options.spdxId}`,
 		}
 
 		for (let i = 0; i < ast.children.length; ++i) {

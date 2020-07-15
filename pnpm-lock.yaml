@@ -1,4 +1,5 @@
 dependencies:
+  '@fox-land/licenses': 0.2.0
   remark: 12.0.0
 devDependencies:
   '@types/jest': 26.0.4
@@ -285,6 +286,10 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-v9kIhKwjeZThiWrLmj0y17CWoyddASLj9O2yvbZkbvw/N3rWOYy9zkV66ursAoVr0mV15bL8g0c4QZUE6cdDoQ==
+  /@fox-land/licenses/0.2.0:
+    dev: false
+    resolution:
+      integrity: sha512-eG90OIzCy2yqo01EOiGBAd043HeQ/OxX5pOa9taY3ydw2U/D/EpfpcR146LeSz8dvc74OFUGwy9NhCbZIqE4dw==
   /@istanbuljs/load-nyc-config/1.1.0:
     dependencies:
       camelcase: 5.3.1
@@ -4110,6 +4115,7 @@ packages:
     resolution:
       integrity: sha512-aePbxDmcYW++PaqBsJ+HYUFwCdv4LVvdnhBy78E57PIor8/OVvhMrADFFEDh8DHDFRv/O9i3lPhsENjO7QX0+A==
 specifiers:
+  '@fox-land/licenses': ^0.2.0
   '@types/jest': ^26.0.4
   '@types/node': ^14.0.23
   jest: ^26.1.0
