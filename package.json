@@ -1,7 +1,12 @@
 {
 	"name": "@fox-land/remark-license",
 	"version": "0.2.1",
+	"main": "build",
+	"files": [
+		"build"
+	],
 	"scripts": {
+		"build": "tsc",
 		"test": "jest"
 	},
 	"devDependencies": {
