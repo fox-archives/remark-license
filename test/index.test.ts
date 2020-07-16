@@ -2,7 +2,7 @@ import remark from 'remark'
 import remarkLicense from '../src'
 
 interface Plugin {
-	fn: Function
+	fn: any
 	options: Record<string, any>
 }
 

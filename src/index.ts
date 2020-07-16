@@ -34,7 +34,7 @@ export default function checkTitle(options: IRemarkLicense) {
 			}
 		}
 
-		ast.children.unshift(licenseText)
-		ast.children.unshift(licenseHeading)
+		ast.children.push(licenseHeading)
+		ast.children.push(licenseText)
 	}
 }
