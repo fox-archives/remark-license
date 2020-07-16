@@ -1,5 +1,18 @@
+import remark from 'remark'
 import remarkLicense from '../src'
-import { doRemark } from './test.util'
+
+interface Plugin {
+	fn: Function
+	options: Record<string, any>
+}
+
+async function doRemark(input: string, plugins: Plugin[]) {
+	let result = remark()
+	for (const plugin of plugins) {
+		result = result().use(plugin.fn, plugin.options)
+	}
+	return await result.process(input)
+}
 
 const plugins = [
 	{
@@ -42,6 +55,25 @@ describe('testing with other headings and content', () => {
 		const output = '# Heading\n\n## License\n\nLicensed under Apache-2.0\n'
 
 		const vfile = await doRemark(input, plugins)
-		return expect(vfile.contents).toBe(output)
+		expect(vfile.contents).toBe(output)
+	})
+
+	/**
+	 * @description note that it is not the responsibility of this
+	 * plugin to check that identifiers are valid
+	 */
+	test('it works with different spdx id', async () => {
+		const input = '# Heading\n## License\n\nSome text here'
+		const output = '# Heading\n\n## License\n\nLicensed under iinvalid\n'
+
+		const vfile = await doRemark(input, [
+			{
+				fn: remarkLicense,
+				options: {
+					spdxId: 'iinvalid',
+				},
+			},
+		])
+		expect(vfile.contents).toBe(output)
 	})
 })
